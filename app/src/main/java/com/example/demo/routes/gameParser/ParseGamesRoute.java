@@ -1,0 +1,21 @@
+package com.example.demo.routes.gameParser;
+
+import org.apache.camel.builder.RouteBuilder;
+import org.springframework.stereotype.Component;
+
+@Component
+public class ParseGamesRoute extends RouteBuilder {
+
+    private ParseGamesProcessor parseGamesProcessor;
+
+    public ParseGamesRoute(ParseGamesProcessor parseGamesProcessor) {
+        this.parseGamesProcessor = parseGamesProcessor;
+    }
+
+    @Override
+    public void configure() throws Exception {
+        from("direct:parse")
+                .process(parseGamesProcessor)
+                .end();
+    }
+}
