@@ -6,6 +6,8 @@ import com.univocity.parsers.annotations.Parsed;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 public class GameData {
@@ -22,18 +24,23 @@ public class GameData {
     }
 
     @Parsed(index = 0)
-    private String name;
+    private long id;
 
     @Parsed(index = 1)
-    private String type;
+    private String name;
 
     @Parsed(index = 2)
+    private String type;
+
+    @Parsed(index = 3)
     @EnumOptions(customElement = "type")
     private DistributionPath distributionPath;
 
-    @Parsed(index = 3)
+    @Parsed(index = 4)
     private int quantity;
 
     @Nested
     private Price price;
+
+    private List<ProducerData> producerData;
 }

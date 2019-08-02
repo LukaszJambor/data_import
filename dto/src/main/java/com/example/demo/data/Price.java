@@ -25,9 +25,9 @@ public class Price {
         }
     }
 
-    @Parsed(index = 4)
+    @Parsed(index = 5)
     private BigDecimal price;
 
-    @Parsed(index = 5)
+    @Parsed(index = 6)
     private Currency currency;
 }

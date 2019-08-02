@@ -1,5 +1,6 @@
-package com.example.demo.routes.gameParser;
+package com.example.demo.route.gameParser;
 
+import com.example.demo.data.GameData;
 import com.example.demo.parser.GameParser;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
@@ -7,6 +8,7 @@ import org.apache.camel.component.file.GenericFile;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
+import java.util.List;
 
 @Component
 public class ParseGamesProcessor implements Processor {
@@ -21,6 +23,7 @@ public class ParseGamesProcessor implements Processor {
     public void process(Exchange exchange) throws Exception {
         GenericFile genericFile = (GenericFile) exchange.getIn().getBody();
         File file = (File) genericFile.getBody();
-        gameParser.parse(file);
+        List<GameData> gameDataList = gameParser.parse(file);
+        exchange.setProperty("gameData", gameDataList);
     }
 }

@@ -1,4 +1,4 @@
-package com.example.demo.routes.gameParser;
+package com.example.demo.route.gameParser;
 
 import org.apache.camel.builder.RouteBuilder;
 import org.springframework.stereotype.Component;
@@ -16,6 +16,7 @@ public class ParseGamesRoute extends RouteBuilder {
     public void configure() throws Exception {
         from("direct:parse")
                 .process(parseGamesProcessor)
+                .to("direct:addProducer")
                 .end();
     }
 }

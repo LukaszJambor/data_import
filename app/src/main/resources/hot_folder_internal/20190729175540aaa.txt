@@ -1,2 +1,0 @@
-God of War;tpp;CD;5;15;PLN
-Doom;fpp;KEY;7;15;EUR
