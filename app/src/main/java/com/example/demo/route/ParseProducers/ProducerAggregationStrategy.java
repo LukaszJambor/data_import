@@ -28,9 +28,9 @@ public class ProducerAggregationStrategy implements AggregationStrategy {
         GenericFile genericFile = (GenericFile) newExchange.getIn().getBody();
         File file = (File) genericFile.getBody();
         List<ProducerData> producerDataList = producerParser.parse(file);
-        List<GameData> gameDataList = (List<GameData>) oldExchange.getProperty("gameData", producerDataList);
+        List<GameData> gameDataList = (List<GameData>) oldExchange.getIn().getBody();
         producerToGameConverter.convert(gameDataList, producerDataList);
-        newExchange.setProperty("enrichedgGmeData", gameDataList);
+        newExchange.getIn().setBody(newExchange);
         return newExchange;
     }
 }

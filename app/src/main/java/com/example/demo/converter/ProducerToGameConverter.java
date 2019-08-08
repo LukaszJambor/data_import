@@ -3,9 +3,7 @@ package com.example.demo.converter;
 import com.example.demo.data.GameData;
 import com.example.demo.data.ProducerData;
 import org.springframework.stereotype.Component;
-import org.springframework.util.CollectionUtils;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -20,12 +18,6 @@ public class ProducerToGameConverter {
         producerDataList.stream()
                 .filter(producerData -> producerData.getId() == gameData.getId())
                 .findAny()
-                .ifPresent(producerData -> {
-                    if (CollectionUtils.isEmpty(gameData.getProducerData())) {
-                        gameData.setProducerData(new ArrayList<>());
-                    }
-                    List<ProducerData> producerDataInternal = gameData.getProducerData();
-                    producerDataInternal.add(producerData);
-                });
+                .ifPresent(gameData::addProducer);
     }
 }

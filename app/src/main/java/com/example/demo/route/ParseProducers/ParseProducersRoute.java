@@ -1,12 +1,16 @@
 package com.example.demo.route.ParseProducers;
 
 import org.apache.camel.builder.RouteBuilder;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
 public class ParseProducersRoute extends RouteBuilder {
 
     private ProducerAggregationStrategy producerAggregationStrategy;
+
+    @Value("${route.parse.producers}")
+    private String routeParseProducers;
 
     public ParseProducersRoute(ProducerAggregationStrategy producerAggregationStrategy) {
         this.producerAggregationStrategy = producerAggregationStrategy;
@@ -15,7 +19,7 @@ public class ParseProducersRoute extends RouteBuilder {
     @Override
     public void configure() throws Exception {
         from("direct:addProducer")
-                .pollEnrich("file:/D:/backup/workspace/data_import/app/src/main/resources/hot_folder/?delete=true&include=producers.txt", producerAggregationStrategy)
+                .pollEnrich(routeParseProducers, producerAggregationStrategy)
                 .end();
     }
 }

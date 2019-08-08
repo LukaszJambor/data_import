@@ -6,6 +6,7 @@ import com.univocity.parsers.annotations.Parsed;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -21,6 +22,10 @@ public class GameData {
         DistributionPath(String type) {
             this.type = type;
         }
+    }
+
+    public GameData() {
+        this.producerDataList = new ArrayList<>();
     }
 
     @Parsed(index = 0)
@@ -42,5 +47,9 @@ public class GameData {
     @Nested
     private Price price;
 
-    private List<ProducerData> producerData;
+    private List<ProducerData> producerDataList;
+
+    public void addProducer(ProducerData producerData){
+        producerDataList.add(producerData);
+    }
 }

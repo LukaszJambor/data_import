@@ -21,9 +21,10 @@ public class ParseGamesProcessor implements Processor {
 
     @Override
     public void process(Exchange exchange) throws Exception {
-        GenericFile genericFile = (GenericFile) exchange.getIn().getBody();
+        GenericFile genericFile = exchange.getIn().getBody(GenericFile.class);
         File file = (File) genericFile.getBody();
         List<GameData> gameDataList = gameParser.parse(file);
-        exchange.setProperty("gameData", gameDataList);
+        exchange.getIn().setBody(gameDataList);
+//        exchange.setProperty("gameData", gameDataList);
     }
 }
