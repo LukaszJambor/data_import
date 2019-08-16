@@ -14,17 +14,6 @@ import java.math.BigDecimal;
 @Getter
 public class Price {
 
-    enum Currency {
-        PLN("PLN"),
-        EUR("EUR");
-
-        public final String type;
-
-        Currency(String type) {
-            this.type = type;
-        }
-    }
-
     @Parsed(index = 5)
     private BigDecimal price;
 

@@ -25,6 +25,5 @@ public class ParseGamesProcessor implements Processor {
         File file = (File) genericFile.getBody();
         List<GameData> gameDataList = gameParser.parse(file);
         exchange.getIn().setBody(gameDataList);
-//        exchange.setProperty("gameData", gameDataList);
     }
 }

@@ -1,6 +1,5 @@
 package com.example.demo.data;
 
-import com.univocity.parsers.annotations.EnumOptions;
 import com.univocity.parsers.annotations.Nested;
 import com.univocity.parsers.annotations.Parsed;
 import lombok.Getter;
@@ -13,23 +12,12 @@ import java.util.List;
 @Setter
 public class GameData {
 
-    enum DistributionPath {
-        CD("CD"),
-        KEY("KEY");
-
-        public final String type;
-
-        DistributionPath(String type) {
-            this.type = type;
-        }
-    }
-
     public GameData() {
         this.producerDataList = new ArrayList<>();
     }
 
     @Parsed(index = 0)
-    private long id;
+    private Long id;
 
     @Parsed(index = 1)
     private String name;
@@ -38,7 +26,6 @@ public class GameData {
     private String type;
 
     @Parsed(index = 3)
-    @EnumOptions(customElement = "type")
     private DistributionPath distributionPath;
 
     @Parsed(index = 4)

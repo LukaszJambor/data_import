@@ -1,4 +1,4 @@
-package com.example.demo.route.ParseProducers;
+package com.example.demo.route.producersParse;
 
 import com.example.demo.converter.ProducerToGameConverter;
 import com.example.demo.data.GameData;
@@ -30,7 +30,7 @@ public class ProducerAggregationStrategy implements AggregationStrategy {
         List<ProducerData> producerDataList = producerParser.parse(file);
         List<GameData> gameDataList = (List<GameData>) oldExchange.getIn().getBody();
         producerToGameConverter.convert(gameDataList, producerDataList);
-        newExchange.getIn().setBody(newExchange);
+        newExchange.getIn().setBody(gameDataList);
         return newExchange;
     }
 }

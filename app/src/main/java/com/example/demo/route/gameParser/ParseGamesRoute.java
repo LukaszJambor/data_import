@@ -16,7 +16,6 @@ public class ParseGamesRoute extends RouteBuilder {
     public void configure() throws Exception {
         from("direct:parse")
                 .process(parseGamesProcessor)
-                .to("direct:addProducer")
-                .end();
+                .to("direct:addProducer");
     }
 }

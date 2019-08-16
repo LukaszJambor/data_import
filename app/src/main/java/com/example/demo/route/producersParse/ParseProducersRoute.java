@@ -1,4 +1,4 @@
-package com.example.demo.route.ParseProducers;
+package com.example.demo.route.producersParse;
 
 import org.apache.camel.builder.RouteBuilder;
 import org.springframework.beans.factory.annotation.Value;
@@ -20,6 +20,6 @@ public class ParseProducersRoute extends RouteBuilder {
     public void configure() throws Exception {
         from("direct:addProducer")
                 .pollEnrich(routeParseProducers, producerAggregationStrategy)
-                .end();
+                .to("direct:exportGames");
     }
 }
