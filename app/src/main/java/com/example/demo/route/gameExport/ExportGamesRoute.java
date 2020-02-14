@@ -15,11 +15,10 @@ public class ExportGamesRoute extends RouteBuilder {
 
     @Override
     public void configure() throws Exception {
-
         from("direct:exportGames")
                 .process(convertGamesProcessor)
                 .setHeader(Exchange.HTTP_METHOD, constant("POST"))
                 .setHeader(Exchange.CONTENT_TYPE, constant("application/json"))
-                .to("http://localhost:8000/api/import/games");
+                .to("http://main-app:9080/api/import/games");
     }
 }
