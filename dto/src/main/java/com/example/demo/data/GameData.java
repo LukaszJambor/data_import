@@ -34,6 +34,9 @@ public class GameData {
     @Nested
     private Price price;
 
+    @Parsed(index = 7)
+    private Long barcode;
+
     private List<ProducerData> producerDataList;
 
     public void addProducer(ProducerData producerData){

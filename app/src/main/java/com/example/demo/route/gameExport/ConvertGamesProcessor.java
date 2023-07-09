@@ -20,13 +20,11 @@ public class ConvertGamesProcessor implements Processor {
     }
 
     @Override
-    public void process(Exchange exchange) throws Exception {
+    public void process(Exchange exchange) {
         List<GameData> gameDataList = (List<GameData>) exchange.getIn().getBody();
         List<com.example2.demo.data.GameData> collect = gameDataList.stream()
                 .map(gameData -> gameDataToGameDataExternalConverter.toDto(gameData))
                 .collect(Collectors.toList());
-        ObjectMapper objectMapper = new ObjectMapper();
-        byte[] bytes = objectMapper.writeValueAsBytes(collect);
-        exchange.getIn().setBody(bytes);
+        exchange.getIn().setBody(collect);
     }
 }

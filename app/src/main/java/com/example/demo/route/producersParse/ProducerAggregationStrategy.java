@@ -4,9 +4,9 @@ import com.example.demo.converter.ProducerToGameConverter;
 import com.example.demo.data.GameData;
 import com.example.demo.data.ProducerData;
 import com.example.demo.parser.ProducerParser;
+import org.apache.camel.AggregationStrategy;
 import org.apache.camel.Exchange;
 import org.apache.camel.component.file.GenericFile;
-import org.apache.camel.processor.aggregate.AggregationStrategy;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
